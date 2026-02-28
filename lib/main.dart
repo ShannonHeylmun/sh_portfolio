@@ -1,7 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:sh_portfolio/first_tab_screen.dart';
+
+import 'package:sh_portfolio/second_tab_screen.dart';
+
+import 'package:google_fonts/google_fonts.dart';
+import 'package:sh_portfolio/tab_icons.dart';
+import 'package:sh_portfolio/third_tab_screen.dart';
+
+import 'package:logging/logging.dart';
+
+final log = Logger('Logger');
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Logger.root.level = Level.ALL; // defaults to Level.INFO
+  Logger.root.onRecord.listen((record) {
+    print('${record.level.name}: ${record.time}: ${record.message}');
+  });
+  // List<int> num = [-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5];
+
+  // Logger.root.level = Level.SEVERE; // skip logs less then severe.
+  // for (int n in num) {
+  //   log.info("extendedFibonacci($n)=${extendedFibonacci(n)}");
+  // }
   runApp(const MyApp());
 }
 
@@ -11,11 +32,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+    return MyHomePage(title: 'Shannon Heylmun');
   }
 }
 
@@ -25,12 +42,20 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
     return MaterialApp(
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        textTheme: GoogleFonts.asapTextTheme(textTheme),
+      ),
       home: DefaultTabController(
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-            title: Text(title),
+            title: Text(
+              title,
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
             bottom: const TabBar(
               tabs: [
                 Tab(icon: FirstTabIcon()),
@@ -45,119 +70,5 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class FirstTabIcon extends StatelessWidget {
-  const FirstTabIcon({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Icon(Icons.work_history_outlined);
-  }
-}
-
-class SecondTabIcon extends StatelessWidget {
-  const SecondTabIcon({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Icon(Icons.psychology_sharp);
-  }
-}
-
-class ThirdTabIcon extends StatelessWidget {
-  const ThirdTabIcon({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Icon(Icons.contact_support);
-  }
-}
-
-class FirstTabScreen extends StatelessWidget {
-  const FirstTabScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          "Shannon Heylmun",
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
-        Text(
-          "Full-Stack Developer",
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
-        Row(
-          children: [
-            Icon(Icons.lightbulb),
-            Flexible(
-              child: Wrap(
-                spacing: 8.0,
-                children: [
-                  link("https://dart.dev/", "Dart"),
-                  link("https://flutter.dev/", "Flutter"),
-                  link("https://git-scm.com/", "Git"),
-                  link("https://www.typescriptlang.org/", "Typescript"),
-                  link(
-                    "https://developer.mozilla.org/en-US/docs/Web/HTML",
-                    "HTML",
-                  ),
-                  link(
-                    "https://developer.mozilla.org/en-US/docs/Web/CSS",
-                    "CSS",
-                  ),
-                  link("https://www.latex-project.org/", "LaTeX"),
-                  link("https://www.python.org/", "Python"),
-                  link("https://www.ruby-lang.org/en/", "Ruby"),
-                  Text("Mechanical Drafting"),
-                  Text("3D-printing"),
-                  Text("CNC"),
-                  Text("Open- and Closed-Circuit SCUBA"),
-                  Text("& learning languages"),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-Future<void> launchURL(String url, {bool isNewTab = true}) async {
-  Uri url0 = Uri.parse(url);
-  if (!await launchUrl(
-    url0,
-    webOnlyWindowName: isNewTab ? '_blank' : '_self',
-  )) {
-    throw Exception('Could not launch $url0');
-  }
-}
-
-Widget link(String url, String text) {
-  return InkWell(
-    child: Text(text, style: TextStyle(color: Colors.blue)),
-    onTap: () => launchURL(url),
-  );
-}
-
-class SecondTabScreen extends StatelessWidget {
-  const SecondTabScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SecondTabIcon();
-  }
-}
-
-class ThirdTabScreen extends StatelessWidget {
-  const ThirdTabScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ThirdTabIcon();
   }
 }
