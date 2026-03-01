@@ -10,10 +10,10 @@ class FirstTabScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabScaffold(
       children: [
-        // WorkRow(
-        //   iconWidget: HugeIcon(icon: HugeIcons.strokeRoundedBriefcase01),
-        //   text: "Full-Stack Development",
-        // ),
+        WorkRow(
+          iconWidget: HugeIcon(icon: HugeIcons.strokeRoundedBriefcase01),
+          text: "Full-Stack Development",
+        ),
         WorkCard(
           children: [
             textLink("https://flutter.dev/", "Flutter"),
@@ -40,10 +40,10 @@ class FirstTabScreen extends StatelessWidget {
             textLink("https://www.ruby-lang.org/en/", "Ruby"),
           ],
         ),
-        // WorkRow(
-        //   iconWidget: HugeIcon(icon: HugeIcons.strokeRoundedTeaching),
-        //   text: "Mathematics & Teaching",
-        // ),
+        WorkRow(
+          iconWidget: HugeIcon(icon: HugeIcons.strokeRoundedTeaching),
+          text: "Mathematics & Teaching",
+        ),
         WorkCard(
           children: [
             textLink(
@@ -70,10 +70,10 @@ class FirstTabScreen extends StatelessWidget {
             Text("Voting Theory"),
           ],
         ),
-        // WorkRow(
-        //   iconWidget: HugeIcon(icon: HugeIcons.strokeRoundedAiInnovation03),
-        //   text: "Interests & Hobbies",
-        // ),
+        WorkRow(
+          iconWidget: HugeIcon(icon: HugeIcons.strokeRoundedAiInnovation03),
+          text: "Interests & Hobbies",
+        ),
         WorkCard(
           children: [
             textLink(

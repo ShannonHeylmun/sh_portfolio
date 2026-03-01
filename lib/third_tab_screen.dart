@@ -21,14 +21,8 @@ class ThirdTabScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
                     border: Border(
-                      top: BorderSide(
-                        width: 2.0,
-                        color: Colors.orange.shade500,
-                      ),
-                      bottom: BorderSide(
-                        width: 2.0,
-                        color: Colors.lightBlue.shade900,
-                      ),
+                      top: BorderSide(width: 2.0, color: Colors.orange),
+                      bottom: BorderSide(width: 2.0, color: Colors.blue),
                     ),
                   ),
 

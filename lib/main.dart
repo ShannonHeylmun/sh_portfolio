@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sh_portfolio/first_tab_screen.dart';
 
 import 'package:sh_portfolio/second_tab_screen.dart';
@@ -23,27 +24,26 @@ void main() {
   // for (int n in num) {
   //   log.info("extendedFibonacci($n)=${extendedFibonacci(n)}");
   // }
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  final String title = "Shannon Heylmun";
   const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MyHomePage(title: 'Shannon Heylmun');
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
+    // SystemChrome.setApplicationSwitcherDescription(
+    //   ApplicationSwitcherDescription(
+    //     label: title,
+    //     primaryColor: 20, // This line is required
+    //   ),
+    // );
     final TextTheme textTheme = Theme.of(context).textTheme;
     return MaterialApp(
+      title: title,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         textTheme: GoogleFonts.asapTextTheme(textTheme),
