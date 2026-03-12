@@ -7,16 +7,16 @@ import 'package:sh_portfolio/tabs/portfolio_screen.dart';
 
 const TABS = [
   EducationTabIcon(),
-  // PortfolioTabIcon(),
+  PortfolioTabIcon(),
   ExperienceTabIcon(),
   ContactTabIcon(),
-  // CreditsTabIcon(),
+  CreditsTabIcon(),
 ];
 
 const TAB_SCREENS = [
   EducationScreen(),
-  // PortfolioScreen(),
+  PortfolioScreen(),
   ExperienceScreen(),
   AboutScreen(),
-  // CreditsScreen(),
+  CreditsScreen(),
 ];
